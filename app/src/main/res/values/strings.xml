@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name" >Scan Anything</string>
-    <string name="scanResult" >Scan Result</string>
+    <string name="app_name">Scan Anything</string>
+    <string name="scanResult">Scan Result</string>
 </resources>
