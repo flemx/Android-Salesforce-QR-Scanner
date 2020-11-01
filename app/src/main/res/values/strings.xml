@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Salesforce Scanner</string>
+    <string name="scanResult">Scan Result</string>
 </resources>
