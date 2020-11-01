@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Scan Anything</string>
     <string name="scanResult">Scan Result</string>
+    <string name="scanDetailTitle">Scan Details</string>
+    <string name="dateScanned">01-01-2020</string>
+    <string name="dateScannedLabel">Date Scanned</string>
+    <string name="codeLabel">Scan Value</string>
+    <string name="codeValue">......</string>
 </resources>

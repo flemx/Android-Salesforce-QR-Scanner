@@ -6,4 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".ScanDetail">
 
+    <TextView
+        android:id="@+id/scanDetailTitle"
+        android:layout_width="177dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/scanDetailTitle"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/codeIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanDetailTitle"
+        app:srcCompat="@mipmap/code_icon" />
+
+    <TextView
+        android:id="@+id/codeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/codeValue"
+        android:textColor="#6E6E6E"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/codeIcon"
+        app:layout_constraintTop_toBottomOf="@+id/scanDetailTitle" />
+
+    <ImageView
+        android:id="@+id/scanDateIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codeIcon"
+        app:srcCompat="@mipmap/date_icon" />
+
+    <TextView
+        android:id="@+id/scanDateValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="164dp"
+        android:text="@string/dateScanned"
+        android:textColor="#6E6E6E"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/scanDateIcon"
+        app:layout_constraintTop_toBottomOf="@+id/scanDetailTitle" />
+
+    <TextView
+        android:id="@+id/dateScannedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dateScannedLabel"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/scanDateIcon"
+        app:layout_constraintTop_toBottomOf="@+id/scanDateValue" />
+
+    <TextView
+        android:id="@+id/codeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/codeLabel"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/codeIcon"
+        app:layout_constraintTop_toBottomOf="@+id/codeValue" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
