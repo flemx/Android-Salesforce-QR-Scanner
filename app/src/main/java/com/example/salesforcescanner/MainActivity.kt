@@ -2,15 +2,9 @@ package com.example.salesforcescanner
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import android.content.Intent;
-import android.media.Image
 import android.widget.Toast;
-import android.widget.Button;
 import android.widget.ImageButton
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-
 import com.google.zxing.integration.android.IntentIntegrator;
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val scanCodeBtn = findViewById<ImageButton>(R.id.tapToScan)
         scanCodeBtn.setOnClickListener {
             IntentIntegrator(this).initiateScan()
-            //Toast.makeText(this, SalesforceApi.testCall(), Toast.LENGTH_LONG).show()
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
