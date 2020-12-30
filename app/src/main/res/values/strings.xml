@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scan Anything</string>
+    <string name="app_name">Salesforce Scanner</string>
     <string name="scanResult">Scan Result</string>
     <string name="scanDetailTitle">Scan Details</string>
     <string name="dateScanned">DD-MM-YYYY</string>
