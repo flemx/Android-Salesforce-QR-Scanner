@@ -31,20 +31,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
+        /**
+         * On button click, initiate qr scanner
+         */
         val scanCodeBtn = findViewById<ImageButton>(R.id.tapToScan)
         scanCodeBtn.setOnClickListener {
-            //IntentIntegrator(this).initiateScan()
+            IntentIntegrator(this).initiateScan()
 
         }
     }
 
 
-
-
-
-
-
+    /**
+     * Method runs after QR Code is scanned and will call REST API to retrieve contact information
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
@@ -53,34 +53,28 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
             } else {
 
-
-
-                //Volley for API request
+                //Use volley for API request
                 val queue = Volley.newRequestQueue(this)
-                val url = "https://salesforce-qr-contacts01.herokuapp.com/contact" + result.contents
+                val url = "https://salesforce-qr-contacts01.herokuapp.com/contact/" + result.contents
                 // Request a string response from the provided URL.
                 val stringRequest = StringRequest(
                     Request.Method.GET, url,
                     Response.Listener<String> { response ->
-                        // Display the first 500 characters of the response string.
-                        val obj = response
-                        //textView.text = response
-
                         Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
                         var date = Date()
                         val formatter = SimpleDateFormat("MMM dd yyyy HH:mma")
                         val scanDate: String = formatter.format(date)
-
+                        // Open the ScanDetail activity and pass through the result of the API call
                         val intent = Intent(this, ScanDetail::class.java).apply {
                             putExtra(SCAN_RESULT, response)
                             putExtra(SCAN_DATE, scanDate)
                         }
                         startActivity( intent)
                     },
-                    Response.ErrorListener { textView.text = "That didn't work!" })
+                    Response.ErrorListener {  Toast.makeText(this, "That didn't work!", Toast.LENGTH_LONG).show()  })
 
-                // Add the request to the RequestQueue.
                 queue.add(stringRequest)
+
 
             }
         }
