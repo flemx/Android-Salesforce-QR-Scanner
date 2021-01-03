@@ -1,7 +1,13 @@
 package com.example.salesforcescanner
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+
+
+import android.content.Intent
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,49 +24,26 @@ import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
-
-import androidx.fragment.app.Fragment
-
-const val SCAN_RESULT = "com.scanAnything.SCAN_RESULT"
-const val SCAN_DATE = "com.scanAnything.SCAN_DATE"
-
-class MainActivity : AppCompatActivity() {
+class ScanFragment:Fragment() {
 
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val scanFragment=ScanFragment()
-        val contactsFragment=ContactsFragment()
-
-        setCurrentFragment(scanFragment)
-
-        bottomNavigationView.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.scanItem->setCurrentFragment(scanFragment)
-                R.id.contactsItem->setCurrentFragment(contactsFragment)
-            }
-            true
-        }
-
-
-        /**
-         * On button click, initiate qr scanner
-         */
-//        val scanCodeBtn = findViewById<ImageButton>(R.id.tapToScan)
-//        scanCodeBtn.setOnClickListener {
-//            IntentIntegrator(this).initiateScan()
-//
-//        }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_scan, container, false)
     }
 
-    private fun setCurrentFragment(fragment:Fragment)=
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment,fragment)
-            commit()
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //        val scanValue = intent.extras?.getString("SCAN_RESULT")
+//
+//        val scanDate = intent.extras?.getString("SCAN_DATE")
+//
+//
+//        val codeValue: TextView = findViewById<TextView>(R.id.codeValue)
+//        val scanDateValue: TextView = findViewById<TextView>(R.id.scanDateValue)
+
+    }
+
 
 
     /**
@@ -100,4 +83,5 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 //    }
+
 }

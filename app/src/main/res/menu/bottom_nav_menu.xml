@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/scanItem"
+        android:title="Scan"
+        android:icon="@drawable/ic_scan_foreground"/>
+    <item
+        android:id="@+id/contactsItem"
+        android:title="Contacts"
+        android:icon="@drawable/ic_contacts_foreground"/>
+</menu>
