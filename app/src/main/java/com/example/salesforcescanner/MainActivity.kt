@@ -20,9 +20,9 @@ import org.json.JSONObject
 
 
 import androidx.fragment.app.Fragment
-
-const val SCAN_RESULT = "com.scanAnything.SCAN_RESULT"
-const val SCAN_DATE = "com.scanAnything.SCAN_DATE"
+//
+//const val SCAN_RESULT = "com.scanAnything.SCAN_RESULT"
+//const val SCAN_DATE = "com.scanAnything.SCAN_DATE"
 
 class MainActivity : AppCompatActivity() {
 
