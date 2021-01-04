@@ -1,7 +1,10 @@
 package com.example.salesforcescanner
 
 
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,30 +16,16 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.fragment_scan.view.*
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 const val SCAN_RESULT = "com.scanAnything.SCAN_RESULT"
-const val SCAN_DATE = "com.scanAnything.SCAN_DATE"
+const val SCAN_ID = "com.scanAnything.SCAN_ID"
 
 
 
 class ScanFragment:Fragment() {
-
-
-    var viewVar: View? = null
-
-
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//
-//
-//        return inflater.inflate(R.layout.fragment_scan, container, false)
-//    }
-
-
-
 
 
 
@@ -52,16 +41,6 @@ class ScanFragment:Fragment() {
          val scanCodeBtn = view.findViewById<ImageButton>(R.id.tapToScan)
             scanCodeBtn.setOnClickListener {
                 IntentIntegrator.forSupportFragment(this).initiateScan()
-
-//                var date = Date()
-//                val formatter = SimpleDateFormat("MMM dd yyyy HH:mma")
-//                val scanDate: String = formatter.format(date)
-//                val intent = Intent(getActivity(), ScanDetail::class.java).apply {
-//                    putExtra(SCAN_RESULT, "Result Test")
-//                    putExtra(SCAN_DATE, scanDate)
-//                }
-//                startActivity( intent)
-
             }
 
 
@@ -82,7 +61,6 @@ class ScanFragment:Fragment() {
             if (result.contents == null) {
                 Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_LONG).show()
             } else {
-
                 //Use volley for API request
                 val queue = Volley.newRequestQueue(getActivity())
                 val url = "https://salesforce-qr-contacts01.herokuapp.com/contact/" + result.contents
@@ -91,13 +69,12 @@ class ScanFragment:Fragment() {
                     Request.Method.GET, url,
                     Response.Listener<String> { response ->
                         Toast.makeText(getActivity(), "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
-                        var date = Date()
-                        val formatter = SimpleDateFormat("MMM dd yyyy HH:mma")
-                        val scanDate: String = formatter.format(date)
-                        // Open the ScanDetail activity and pass through the result of the API call
-                        val intent = Intent(getActivity(), ScanDetail::class.java).apply {
-                            putExtra(SCAN_RESULT, response)
-                            putExtra(SCAN_DATE, scanDate)
+                        // Create Contact from API result and open ScanDetail page with Contact details
+                       var contact = Contact(response,result.contents);
+                        addContact(contact);
+                        val intent = Intent(this.activity, ScanDetail::class.java).apply {
+                            putExtra(SCAN_RESULT, contact.name)
+                            putExtra(SCAN_ID, contact.id)
                         }
                         startActivity( intent)
                     },
@@ -111,7 +88,27 @@ class ScanFragment:Fragment() {
             }
         }
 
+    }
+
+
+    /**
+     * Adding contact to shared preferences
+     */
+    fun addContact(contact: Contact){
+        val gson = Gson()
+        val json = gson.toJson(contact)
+        // Save functionality in storage
+        var prefs = activity?.getSharedPreferences(getString(R.string.SHARED_PREF_NAME), Context.MODE_PRIVATE)
+        var contacts = prefs?.getStringSet(getString(R.string.CONTACT_LIST),setOf())?.toMutableSet()
+        if (contacts != null) {
+            contacts.add(json)
+        }
+        if (prefs != null) {
+            prefs.edit().putStringSet(getString(R.string.CONTACT_LIST), contacts).apply()
+        }
 
     }
+
+
 
 }

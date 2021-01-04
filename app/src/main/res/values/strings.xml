@@ -4,8 +4,10 @@
     <string name="scanDetailTitle">Scan Details</string>
     <string name="dateScanned">DD-MM-YYYY</string>
     <string name="dateScannedLabel">Date Scanned</string>
-    <string name="codeLabel">Scan Value</string>
+    <string name="idScannedLabel">Contact ID</string>
+    <string name="scanIdValue">......</string>
+    <string name="codeLabel">Contact name</string>
     <string name="codeValue">......</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="SHARED_PREF_NAME">com.example.salesforcescanner.sharedprefs</string>
+    <string name="CONTACT_LIST">contactlist</string>
 </resources>

@@ -63,6 +63,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+
     /**
      * Method runs after QR Code is scanned and will call REST API to retrieve contact information
      */

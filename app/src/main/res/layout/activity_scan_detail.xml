@@ -22,20 +22,20 @@
 
     <ImageView
         android:id="@+id/codeIcon"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="52dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scanDetailTitle"
-        app:srcCompat="@mipmap/code_icon" />
+        app:srcCompat="@drawable/ic_contacts_foreground" />
 
     <TextView
         android:id="@+id/codeValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
         android:text="@string/codeValue"
         android:textColor="#6E6E6E"
         android:textSize="18sp"
@@ -46,11 +46,21 @@
         android:id="@+id/scanDateIcon"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/codeIcon"
         app:srcCompat="@mipmap/date_icon" />
+
+    <ImageView
+        android:id="@+id/scanIdIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanDateIcon"
+        app:srcCompat="@mipmap/code_icon" />
 
     <TextView
         android:id="@+id/scanDateValue"
@@ -65,6 +75,18 @@
         app:layout_constraintTop_toBottomOf="@+id/scanDetailTitle" />
 
     <TextView
+        android:id="@+id/scanIdValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/scanIdValue"
+        android:textColor="#6E6E6E"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/scanDateIcon"
+        app:layout_constraintTop_toTopOf="@+id/dateScannedLabel" />
+
+    <TextView
         android:id="@+id/dateScannedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,14 +98,39 @@
         app:layout_constraintTop_toBottomOf="@+id/scanDateValue" />
 
     <TextView
+        android:id="@+id/idScannedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/idScannedLabel"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/scanIdIcon"
+        app:layout_constraintTop_toBottomOf="@+id/scanIdValue" />
+
+    <TextView
         android:id="@+id/codeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="@string/codeLabel"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/codeIcon"
         app:layout_constraintTop_toBottomOf="@+id/codeValue" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:text="Go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.299"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateScannedLabel"
+        app:layout_constraintVertical_bias="0.326" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
