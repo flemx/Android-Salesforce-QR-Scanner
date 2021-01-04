@@ -1,12 +1,11 @@
 package com.example.salesforcescanner
 
-import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.contacts_row.view.*
 
 class ContactAdapter(val contacts: List<Contact>) : RecyclerView.Adapter<ContactAdapter.ContactsHolder>() {
@@ -28,7 +27,12 @@ class ContactAdapter(val contacts: List<Contact>) : RecyclerView.Adapter<Contact
         }
 
         override fun onClick(v: View?) {
-            TODO("Not yet implemented")
+            val intent = Intent(view.context, ScanDetail::class.java).apply {
+                putExtra(SCAN_RESULT, contact.name)
+                putExtra(SCAN_ID, contact.id)
+                putExtra(SCAN_PAGE, "LIST")
+            }
+            startActivity( view.context, intent, null)
         }
     }
 

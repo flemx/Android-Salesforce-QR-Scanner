@@ -2,9 +2,7 @@ package com.example.salesforcescanner
 
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +18,6 @@ import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
 
 
-const val SCAN_RESULT = "com.scanAnything.SCAN_RESULT"
-const val SCAN_ID = "com.scanAnything.SCAN_ID"
 
 
 
@@ -75,6 +71,7 @@ class ScanFragment:Fragment() {
                         val intent = Intent(this.activity, ScanDetail::class.java).apply {
                             putExtra(SCAN_RESULT, contact.name)
                             putExtra(SCAN_ID, contact.id)
+                            putExtra(SCAN_PAGE, "SCAN")
                         }
                         startActivity( intent)
                     },
